@@ -7,7 +7,7 @@
     android:id="@+id/cardView"
     app:cardElevation="4dp"
     app:cardCornerRadius="200dp"
-    app:cardUseCompatPadding="true"
+    app:cardUseCompatPadding="false"
     app:contentPadding="15dp">
 
     <LinearLayout

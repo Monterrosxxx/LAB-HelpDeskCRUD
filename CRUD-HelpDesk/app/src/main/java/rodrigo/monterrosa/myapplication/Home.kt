@@ -51,33 +51,28 @@ class Home : AppCompatActivity() {
             val objConexion = claseConexion().cadenaConexion()
 
             val statement = objConexion?.createStatement()
-            if (statement != null) {
-                val resulSet = statement.executeQuery("SELECT * FROM tbTickets")
+            val resulSet = statement?.executeQuery("SELECT * FROM tbTickets")!!
 
-                val listaTicekts = mutableListOf<tbTickets>()
+            val listaTicekts = mutableListOf<tbTickets>()
 
-                while (resulSet.next()){
+            while (resulSet.next()){
 
-                    val uuid = resulSet.getString("UUID_ticket")
-                    val numeroTicket = resulSet.getString("numeroTicket")
-                    val tituloTicket = resulSet.getString("tituloTicket")
-                    val descripcionTicket = resulSet.getString("descripcionTicket")
-                    val nombreAutor = resulSet.getString("nombreAutor")
-                    val emailAutor = resulSet.getString("emailAutor")
-                    val fechaCreacion = resulSet.getString("fechaCreacion")
-                    val ticketEstado = resulSet.getString("ticketEstado")
-                    val fechaFinalizacion = resulSet.getString("fechaFinalizacion")
+                val uuid = resulSet.getString("UUID_ticket")
+                val numeroTicket = resulSet.getString("numeroTicket")
+                val tituloTicket = resulSet.getString("tituloTicket")
+                val descripcionTicket = resulSet.getString("descripcionTicket")
+                val nombreAutor = resulSet.getString("nombreAutor")
+                val emailAutor = resulSet.getString("emailAutor")
+                val fechaCreacion = resulSet.getString("fechaCreacion")
+                val ticketEstado = resulSet.getString("ticketEstado")
+                val fechaFinalizacion = resulSet.getString("fechaFinalizacion")
 
-                    val valoresJuntos = tbTickets(uuid, numeroTicket, tituloTicket, descripcionTicket, nombreAutor, emailAutor, fechaCreacion, ticketEstado, fechaFinalizacion)
+                val valoresJuntos = tbTickets(uuid, numeroTicket, tituloTicket, descripcionTicket, nombreAutor, emailAutor, fechaCreacion, ticketEstado, fechaFinalizacion)
 
-                    listaTicekts.add(valoresJuntos)
-                }
-
-                return listaTicekts
-            } else {
-                // Manejar el caso en que statement es null...
-                return emptyList()
+                listaTicekts.add(valoresJuntos)
             }
+
+            return listaTicekts
         }
 
         //TODO:Intento de reparar la app(fin)
