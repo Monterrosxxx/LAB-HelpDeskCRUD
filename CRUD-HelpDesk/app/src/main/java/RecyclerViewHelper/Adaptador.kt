@@ -1,8 +1,10 @@
 package RecyclerViewHelper
 
 import android.app.AlertDialog
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -99,6 +101,29 @@ class Adaptador (private var Datos:List<tbTickets>): RecyclerView.Adapter<ViewHo
             val alertDialog = builder.create()
             alertDialog.show()
 
+        }
+
+        holder.imgEditar.setOnClickListener {
+
+            val context = holder.itemView.context
+
+            val builder = AlertDialog.Builder(context)
+            builder.setTitle("Editar Ticket")
+
+            val cuadtritoNuevoTitulo = EditText(context)
+
+            cuadtritoNuevoTitulo.setHint(item.tituloTicket)
+            builder.setView(cuadtritoNuevoTitulo)
+
+            builder.setPositiveButton("Actualizar"){ dialog, wich ->
+                actualizarTicket(cuadtritoNuevoTitulo.text.toString(), item.uuid)
+            }
+            builder.setNegativeButton("Cancelar"){ dialog, wich ->
+                dialog.dismiss()
+            }
+
+            val dialog = builder.create()
+            dialog.show()
         }
 
     }

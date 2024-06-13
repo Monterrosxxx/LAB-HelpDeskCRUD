@@ -107,6 +107,11 @@ class Home : AppCompatActivity() {
                 aggTicket.setString(9, txtFechaFinalizacion.text.toString())
                 aggTicket.executeUpdate()
 
+                val nuevosTickets = obtenerTickets()
+                withContext(Dispatchers.Main){
+                    (rcvTickets.adapter as? Adaptador)?.actualizarLista(nuevosTickets)
+                }
+
 
             }
 
