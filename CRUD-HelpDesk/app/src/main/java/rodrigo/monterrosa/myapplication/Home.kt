@@ -88,6 +88,17 @@ class Home : AppCompatActivity() {
 
         }
 
+        fun limpiar(){
+            txtNumeroTicket.setText("")
+            txtTituloTicket.setText("")
+            txtDescripcion.setText("")
+            txtAutor.setText("")
+            txtEmail.setText("")
+            txtFechaCreacion.setText("")
+            txtEstado.setText("")
+            txtFechaFinalizacion.setText("")
+        }
+
         btnAgregar.setOnClickListener {
 
             CoroutineScope(Dispatchers.IO).launch {
@@ -110,6 +121,7 @@ class Home : AppCompatActivity() {
                 val nuevosTickets = obtenerTickets()
                 withContext(Dispatchers.Main){
                     (rcvTickets.adapter as? Adaptador)?.actualizarLista(nuevosTickets)
+                    limpiar()
                 }
 
 

@@ -21,5 +21,5 @@ drop table tbTickets
 select * from tbTickets
 
 select * from tbUsuarios
-delete tbTickets where tituloTicket = 'a'
+delete tbTickets where tituloTicket = 'hola'
 commit

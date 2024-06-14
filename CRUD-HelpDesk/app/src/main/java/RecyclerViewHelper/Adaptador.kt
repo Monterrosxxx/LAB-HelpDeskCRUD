@@ -22,11 +22,11 @@ class Adaptador (private var Datos:List<tbTickets>): RecyclerView.Adapter<ViewHo
     }
 
     fun actualizarListaDespuesdeActualizarlosDatos(uuid: String, nuevoNombre: String){
-
         val index = Datos.indexOfFirst { it.uuid == uuid }
-        Datos[index].tituloTicket == nuevoNombre
+        Datos[index].tituloTicket = nuevoNombre
         notifyItemChanged(index)
     }
+
 
     fun eliminarRegistro(nombreTicket: String, position: Int){
 
